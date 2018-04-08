@@ -1,0 +1,39 @@
+
+<!-- Nav Section -->
+<nav>
+  <div>
+    <h3>News Scraper Application</h3>
+    <div>
+      <ul>
+        <li class="active">
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/savedarticles">Saved Articles</a>
+        </li>
+      </ul>
+      <form action="/scrape" method="POST">
+        <button type="submit">Scrape New Articles!</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Articles Section -->
+<div id="wrapper">
+  {{#each articles}}
+  <div>
+    <h3>{{this.title}}</h3>
+  </div>
+  <div>
+    <form action="/save" method="POST">
+      <input id="articleTitle" type="hidden" name="title" value="{{this.title}}">
+      <input id="articleLink" type="hidden" name="link" value={{this.link}}>
+      <button type="submit">Save Article</button>
+    </form>
+  </div>
+  <div>
+    <p>{{this.link}}</p>
+  </div>
+  {{/each}}
+</div>

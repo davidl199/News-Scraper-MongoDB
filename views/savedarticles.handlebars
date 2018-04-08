@@ -1,0 +1,49 @@
+<nav>
+  <div>
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li class="active">
+        <a href="/savedarticles">Saved Articles</a>
+      </li>
+    </ul>
+    <form action="/scrape" method="POST">
+      <button type="submit">Scrape New Articles!</button>
+    </form>
+  </div>
+</nav>
+
+<div id="wrapper">
+  <div id="articles">
+    {{#each articles}}
+    <div>
+      <h3>{{this.title}}</h3>
+    </div>
+    <div>
+      <button id="notesButton" type="submit" data-id={{this.id}}>Show/Add Notes</button>
+    </div>
+    <div>
+      <form action="/delete/{{this.id}}?_method=DELETE">
+        <button type="submit">Delete Saved Article</button>
+      </form>
+    </div>
+    <div>
+      <p>{{this.link}}</p>
+    </div>
+     {{/each}}
+  </div>
+ 
+
+  <div id="noteSection">
+    <h4>Notes for Article
+      <span id="articleID"></span>
+    </h4>
+    <div>
+      <div id="notes"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/assets/js/app.js"></script>
