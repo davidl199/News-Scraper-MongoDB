@@ -63,10 +63,6 @@ router.post("/save", function(req, res) {
     if (err) {
       console.log(err);
     }
-    // Or log the doc
-    //else {
-      //console.log(doc);
-    //}
   });
   res.redirect("/savedarticles");
 });
@@ -76,10 +72,7 @@ router.get("/delete/:id", function(req, res) {
   Article.findOneAndRemove({"_id": req.params.id}, function (err, offer) {
     if (err) {
       console.log("Unable to delete:" + err);
-    } 
-    //else {
-    //   //console.log("Able to delete, Yay");
-    // }
+    }
     res.redirect("/savedarticles");
   });
 });
@@ -90,9 +83,6 @@ router.get("/notes/:id", function(req, res) {
     if (err) {
       console.log("Unable able to delete:" + err);
     } 
-    // else {
-    //   console.log("Able to delete, Yay");
-    // }
     res.send(doc);
   });
 });
@@ -108,7 +98,6 @@ router.get("/articles/:id", function(req, res) {
       console.log("Unable to find article");
     }
     else {
-      //console.log("We are getting article and maybe notes? " + doc);
       res.json(doc);
     }
   });
